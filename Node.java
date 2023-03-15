@@ -13,6 +13,7 @@ public class Node {
     Person p2;
 
     public String toString() {
+
         return String.format("<%s %s %s>", p1, re, p2);
     }
 

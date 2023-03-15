@@ -1,4 +1,4 @@
-public class Main {
+public class Main{
     public static void main(String[] args) {
         Person irina = new Person("Ирина");
         Person vasya = new Person("Вася");
@@ -8,18 +8,16 @@ public class Main {
 
         GeoTree gt = new GeoTree();
 
-        gt.appendParrentChildren(irina, vasya);
-        gt.appendParrentChildren(irina, masha);
-        gt.appendParrentChildren(vasya, jane);
-        gt.appendParrentChildren(vasya, ivan);
+        gt.appendConnection(irina, vasya, Relationship.parent);
+        gt.appendConnection(irina, masha, Relationship.parent);
+        gt.appendConnection(vasya, jane, Relationship.parent);
+        gt.appendConnection(vasya, ivan, Relationship.parent);
 
-        gt.appendRelative(vasya, masha);
-        gt.appendRelative(jane, ivan);
+        gt.appendConnection(vasya, masha, Relationship.relative);
+        gt.appendConnection(jane, ivan, Relationship.relative);
 
-
-        new View(gt).childrenView(irina);
-        new View(gt).relativeView(vasya);
-
+        System.out.println(gt.allRel(irina));
+        System.out.println(gt.allRel(vasya));
     }
 
 }

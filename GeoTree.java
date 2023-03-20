@@ -1,26 +1,24 @@
 import java.util.ArrayList;
+import java.util.List;
 
-public class GeoTree implements Geo{
+public class GeoTree implements Geo, TestConsole, TestConsoleWithout, AllInArray {
     private ArrayList<Node> tree = new ArrayList<>();
+    public ArrayList<Person> tree2 = new ArrayList<>();
+
 
     public ArrayList<Node> getTree() {
 
         return tree;
     }
 
-    public void appendParrentChildren(Person parent, Person children) {
-        tree.add(new Node(parent, Relationship.parent, children));
-        tree.add(new Node(children, Relationship.children, parent));
-    }
-
-    public void appendRelative (Person parent1, Person parent2){
-        tree.add(new Node(parent1, Relationship.relative, parent2));
-    }
-
     @Override
     public void appendConnection(Person p1, Person p2, Relationship re) {
         tree.add(new Node(p1, re, p2));
         tree.add(new Node(p2, re.getInversionRel(), p1));
+    }
+
+    public void appendConnection(Person p){
+        tree2.add(p);
     }
 
     @Override
@@ -35,11 +33,23 @@ public class GeoTree implements Geo{
         return result;
     }
 
+    @Override
+    public void printConsole(Person person) {
+        System.out.println(allRel(person));
+    }
 
+    @Override
+    public void printConsoleWithout() {
+        System.out.println(all());
+    }
 
-//    public void appendConnection(Person p1, Person p2, Relationship re){
-//        tree.add(new Node(p1, re, p2));
-//        tree.add(new Node(p2, re.getInversionRel(), p1));
-//    }
+    @Override
+    public ArrayList<String> all() { ////////////////////////////
+        ArrayList<String> result = new ArrayList<>();
+        for (Person p : tree2){
+            result.add(p.getFullName() +" - "+ p.getAge());
+        }
+        return result;
+    }
 
 }

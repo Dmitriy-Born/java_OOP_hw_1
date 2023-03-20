@@ -1,8 +1,7 @@
 import java.util.ArrayList;
 
-public class Reserch {
+public class Reserch implements TestConsole{
     ArrayList<String> result = new ArrayList<>();
-    ArrayList<String> result2 = new ArrayList<>();
     ArrayList<Node> tree;
 
 
@@ -10,7 +9,7 @@ public class Reserch {
         tree = geoTree.getTree();
     }
 
-    public ArrayList<String> spendChildren(Person p, Relationship re) {
+    public ArrayList<String> spendRelationship(Person p, Relationship re) {
         for (Node t : tree) {
             if (t.p1.getFullName() == p.getFullName() && t.re == re) {
                 result.add(t.p2.getFullName());
@@ -20,5 +19,8 @@ public class Reserch {
     }
 
 
-
+    @Override
+    public void printConsole(Person person) {
+        System.out.println(result);
+    }
 }

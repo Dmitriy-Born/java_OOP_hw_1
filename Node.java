@@ -5,7 +5,10 @@ public class Node {
         this.re = re;
         this.p2 = p2;
 
+    }
 
+    public Node(Person p1){
+        this.p1 = p1;
     }
 
     Person p1;
@@ -16,5 +19,6 @@ public class Node {
 
         return String.format("<%s %s %s>", p1, re, p2);
     }
+
 
 }

@@ -14,6 +14,19 @@ public enum Relationship {
             return relative;
         }
 
+    },
+
+    granddaughter { ////////// ??????????????
+        public Relationship getInversionRel(){
+            return grandmother;
+        }
+    },
+
+    grandmother {
+        public Relationship getInversionRel() {
+            return granddaughter;
+        }
     };
+
     public abstract Relationship getInversionRel();
 }
